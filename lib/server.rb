@@ -3,12 +3,12 @@ require 'socket'
 class Server
   def initialize
     @tcp_server = TCPServer.new(9292)
-    @client = @tcp_server.accept
   end
 
   def start
     count = 0
     while true
+      @client = @tcp_server.accept
       puts 'Ready for a request'
       request_lines = []
       # require "pry"; binding.pry
@@ -35,6 +35,9 @@ class Server
       puts "\nResponse complete, exiting."
       count += 1
     end
+  end
+
+  def close
     @client.close
   end
 end
