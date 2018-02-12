@@ -3,31 +3,24 @@ require 'socket'
 class Server
   def initialize
     @tcp_server = TCPServer.new(9292)
-    @request_lines = []
-    @count = 1
+    @tcp_server.listen(1)
+    @client = nil
+    @count = 0
   end
 
   def start
     loop do
       @client = @tcp_server.accept
-      puts 'Ready for a request'
-      while line = @client.gets and !line.chomp.empty?
-        @request_lines << line.chomp
-      end
-      content_output
       @count += 1
+      response
       @client.close
+      break if count == 4
     end
   end
 
-  def content_output
-    puts 'Got this request:'
-    puts @request_lines.inspect
-
-    puts 'Sending response.'
-    # response = "<pre>" + request_lines.join("\n") + "</pre>"
-    puts @count
-    output = "<html><head></head><body>Hello, World! (#{@count})</body></html>"
+  def response
+    response = '<pre>' + "Hello, World! (#{@count})" + '</pre>'
+    output = "<html><head></head><body>#{response}</body></html>"
     headers = ['http/1.1 200 ok',
                "date: #{Time.now.strftime('%a, %e %b %Y %H:%M:%S %z')}",
                'server: ruby',
@@ -35,14 +28,5 @@ class Server
                "content-length: #{output.length}\r\n\r\n"].join("\r\n")
     @client.puts headers
     @client.puts output
-
-    puts ['Wrote this response:', headers, output].join("\n")
-    puts "\nResponse complete, exiting."
-  end
-
-  def while_loop
-  end
-
-  def close
   end
 end

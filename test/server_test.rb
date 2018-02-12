@@ -5,13 +5,14 @@ require 'minitest/pride'
 require './lib/server'
 
 class ServerTest < MiniTest::Test
-  def test_server_class
+  def test_count_method
     server = Server.new
+    expected = server.count_response
 
-    assert_instance_of Server, server
+    assert_equal 1, expected
   end
 
-  def test_server_initializes_with_new_socket
-    # server = Server.new
+  def test_initial_terminal_method
+    server = Server.new
   end
 end
