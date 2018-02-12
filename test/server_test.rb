@@ -11,8 +11,4 @@ class ServerTest < MiniTest::Test
 
     assert_equal 1, expected
   end
-
-  def test_initial_terminal_method
-    server = Server.new
-  end
 end
