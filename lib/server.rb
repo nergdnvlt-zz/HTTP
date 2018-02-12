@@ -8,8 +8,7 @@ class Server
   end
 
   def start
-    @count = 1
-    while true
+    loop do
       @client = @tcp_server.accept
       puts 'Ready for a request'
       while line = @client.gets and !line.chomp.empty?
@@ -43,7 +42,7 @@ class Server
 
   def while_loop
   end
-  
+
   def close
   end
 end
