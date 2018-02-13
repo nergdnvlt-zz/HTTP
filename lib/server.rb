@@ -18,7 +18,6 @@ class Server
       while_loop
       @count += 1
       response
-      # @client.puts parser
       @client.close
       break if @count == 4
     end
@@ -36,7 +35,6 @@ class Server
 
   def response
     puts @request_lines
-    # response = '<pre>' + "Hello, World! (#{@count})\n\t#{diagnostic}" '</pre>'
     response = '<pre>'"#{parser}"'</pre>'
     output = "<html><head></head><body>#{response}</body></html>"
     headers = ['http/1.1 200 ok',
@@ -47,22 +45,4 @@ class Server
     @client.puts headers
     @client.puts output
   end
-  #
-  # def diagnostic
-  #   first_three = @request_lines[0].split
-  #   verb = first_three[0]
-  #   path = first_three[1]
-  #   protocol = first_three[2]
-  #   host = @request_lines[1].split[1]
-  #   port = @request_lines[1].split(":")[2]
-  #   accept = @request_lines[6].split[1]
-  #
-  #   "Verb: #{verb}
-  #   Path: #{path}
-  #   Protocol: #{protocol}
-  #   Host: #{host}
-  #   Port: #{port}
-  #   Origin: #{host}
-  #   Accept: #{accept}"
-  # end
 end
