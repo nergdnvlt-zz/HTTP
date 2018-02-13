@@ -10,6 +10,7 @@ class Server
     @client = nil
     @count = 0
     @request_lines = []
+    @last_request = []
   end
 
   def start
@@ -19,6 +20,7 @@ class Server
       @count += 1
       response
       @client.close
+      @request_lines = []
       break if @count == 4
     end
   end
@@ -30,7 +32,11 @@ class Server
   end
 
   def parser
-    Path.route(@request_lines)
+    last_request = @request_lines
+    # @last_request << @request_lines
+    # last_request = @last_request[-1]
+    require "pry"; binding.pry
+    Path.route(last_request)
   end
 
   def response

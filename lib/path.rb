@@ -3,10 +3,10 @@ require './lib/diagnose'
 module Path
   include Diagnose
   @count = 0
+  @total_count = 0
 
   def self.route(request_lines)
-    # server.count = 0
-    # total_count = 0
+    @total_count += 1
     path = request_lines[0].split[1]
     if path == '/'
       Diagnose.diagnostic_string(request_lines)
@@ -14,11 +14,9 @@ module Path
       @count += 1
       "Hello World (#{@count})"
     elsif path == '/datetime'
-      'time'
+      Time.now
     elsif path == '/shutdown'
-      'close client'
-    else
-      'edge case'
+      "Total Requests: #{total_count}"
     end
   end
 end
