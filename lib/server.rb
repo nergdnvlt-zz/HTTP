@@ -22,7 +22,8 @@ class Server
   end
 
   def response
-    response = '<pre>' + "Hello, World! (#{@count})\n #{diagnostic}" '</pre>'
+    puts request_lines
+    response = '<pre>' + "Hello, World! (#{@count})\n\t#{diagnostic}" '</pre>'
     output = "<html><head></head><body>#{response}</body></html>"
     headers = ['http/1.1 200 ok',
                "date: #{Time.now.strftime('%a, %e %b %Y %H:%M:%S %z')}",
@@ -45,14 +46,15 @@ class Server
     path = first_three[1]
     protocol = first_three[2]
     host = @request_lines[1].split[1]
-    # require "pry"; binding.pry
+    port = @request_lines[1].split(":")[2]
+    accept = @request_lines[6].split[1]
 
     "Verb: #{verb}
     Path: #{path}
     Protocol: #{protocol}
     Host: #{host}
-    Port: 9292
-    Origin: 127.0.0.1
-    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+    Port: #{port}
+    Origin: #{host}
+    Accept: #{accept}"
   end
 end
