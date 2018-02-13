@@ -1,7 +1,9 @@
 require 'socket'
+require './lib/path_parser'
 
 # Creates a server object
 class Server
+  include Path
   def initialize
     @tcp_server = TCPServer.new(9292)
     @tcp_server.listen(1)
@@ -16,14 +18,26 @@ class Server
       while_loop
       @count += 1
       response
+      # @client.puts parser
       @client.close
       break if @count == 4
     end
   end
 
+  def while_loop
+    while line = @client.gets and !line.chomp.empty?
+      @request_lines << line.chomp
+    end
+  end
+
+  def parser
+    Path.route(@request_lines)
+  end
+
   def response
-    puts request_lines
-    response = '<pre>' + "Hello, World! (#{@count})\n\t#{diagnostic}" '</pre>'
+    puts @request_lines
+    # response = '<pre>' + "Hello, World! (#{@count})\n\t#{diagnostic}" '</pre>'
+    response = '<pre>'"#{parser}"'</pre>'
     output = "<html><head></head><body>#{response}</body></html>"
     headers = ['http/1.1 200 ok',
                "date: #{Time.now.strftime('%a, %e %b %Y %H:%M:%S %z')}",
@@ -33,28 +47,22 @@ class Server
     @client.puts headers
     @client.puts output
   end
-
-  def while_loop
-    while line = @client.gets and !line.chomp.empty?
-      @request_lines << line.chomp
-    end
-  end
-
-  def diagnostic
-    first_three = @request_lines[0].split
-    verb = first_three[0]
-    path = first_three[1]
-    protocol = first_three[2]
-    host = @request_lines[1].split[1]
-    port = @request_lines[1].split(":")[2]
-    accept = @request_lines[6].split[1]
-
-    "Verb: #{verb}
-    Path: #{path}
-    Protocol: #{protocol}
-    Host: #{host}
-    Port: #{port}
-    Origin: #{host}
-    Accept: #{accept}"
-  end
+  #
+  # def diagnostic
+  #   first_three = @request_lines[0].split
+  #   verb = first_three[0]
+  #   path = first_three[1]
+  #   protocol = first_three[2]
+  #   host = @request_lines[1].split[1]
+  #   port = @request_lines[1].split(":")[2]
+  #   accept = @request_lines[6].split[1]
+  #
+  #   "Verb: #{verb}
+  #   Path: #{path}
+  #   Protocol: #{protocol}
+  #   Host: #{host}
+  #   Port: #{port}
+  #   Origin: #{host}
+  #   Accept: #{accept}"
+  # end
 end
