@@ -1,5 +1,5 @@
 require './lib/server.rb'
-require './lib/diagnostic_build'
+require './lib/diagnose'
 
 module Path
   include Diagnose

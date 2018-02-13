@@ -2,7 +2,7 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 
-require './lib/path_parser'
+require './lib/path'
 
 class PathParserTest < MiniTest::Test
   def test_will_pass_argument

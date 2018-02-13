@@ -2,7 +2,7 @@ require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
 
-require './lib/diagnostic_build'
+require './lib/diagnose'
 
 class DiagnosticTest < MiniTest::Test
   def test_diagnostic

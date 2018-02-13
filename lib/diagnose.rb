@@ -1,5 +1,3 @@
-require './lib/path_parser.rb'
-
 module Diagnose
   def self.diagnostic_string(request)
     "Verb: #{verb_variable(request)}

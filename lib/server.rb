@@ -1,5 +1,5 @@
 require 'socket'
-require './lib/path_parser'
+require './lib/path'
 
 # Creates a server object
 class Server
