@@ -25,13 +25,16 @@ module Path
     "Total Requests: #{@total_count}"
   end
 
-  def dictionary(path)
-    word = path
-    require "pry"; binding.pry
-    File.open('/usr/share/dict/words') do |file|
-      file.each do |line|
-        word[line.strip] = true
-      end
-    end
+  def self.dictionary(path)
+    word = path.split('=')[1]
+    words = File.read('/usr/share/dict/words')
+    search = if words.include?(word.downcase)
+               true
+             else
+               false
+             end
+    print_word = word.upcase
+    return "#{print_word} is a known word" if search
+    "#{print_word} is not a known word"
   end
 end
