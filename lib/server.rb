@@ -8,20 +8,18 @@ class Server
     @tcp_server = TCPServer.new(9292)
     @tcp_server.listen(1)
     @client = nil
-    @count = 0
     @request_lines = []
-    @last_request = []
+    @server_loop = true
   end
 
   def start
-    loop do
+    while @server_loop
       @client = @tcp_server.accept
       while_loop
-      @count += 1
+      puts @request_lines
       response
       @client.close
       @request_lines = []
-      break if @count == 4
     end
   end
 
@@ -32,17 +30,13 @@ class Server
   end
 
   def parser
-    last_request = @request_lines
-    # @last_request << @request_lines
-    # last_request = @last_request[-1]
-    require "pry"; binding.pry
-    Path.route(last_request)
+    Path.route(@request_lines)
   end
 
   def response
-    puts @request_lines
     response = '<pre>'"#{parser}"'</pre>'
     output = "<html><head></head><body>#{response}</body></html>"
+    @server_loop = false if output.include?'Total'
     headers = ['http/1.1 200 ok',
                "date: #{Time.now.strftime('%a, %e %b %Y %H:%M:%S %z')}",
                'server: ruby',

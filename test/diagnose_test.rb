@@ -22,7 +22,7 @@ class DiagnosticTest < MiniTest::Test
     Port: 9292
     Origin: 127.0.0.1:9292
     Accept: */*'
-    result = Diagnose.diagnostic_string(request_lines)
+    result = Diagnose.diagnostic(request_lines)
     assert_equal expected, result
   end
 end

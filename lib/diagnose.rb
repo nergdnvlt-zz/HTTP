@@ -1,35 +1,36 @@
+# Puts together diagnostic string
 module Diagnose
-  def self.diagnostic_string(request)
-    "Verb: #{verb_variable(request)}
-    Path: #{path_variable(request)}
-    Protocol: #{protocol_variable(request)}
-    Host: #{host_variable(request)}
-    Port: #{port_variable(request)}
-    Origin: #{host_variable(request)}
-    Accept: #{accept_variable(request)}"
+  def self.diagnostic(request)
+    "\n\tVerb: #{verb(request)}
+    Path: #{path(request)}
+    Protocol: #{protocol(request)}
+    Host: #{host(request)}
+    Port: #{port(request)}
+    Origin: #{host(request)}
+    Accept: #{accept(request)}\n"
   end
 
-  def self.verb_variable(request)
+  def self.verb(request)
     request[0].split[0]
   end
 
-  def self.path_variable(request)
+  def self.path(request)
     request[0].split[1]
   end
 
-  def self.protocol_variable(request)
+  def self.protocol(request)
     request[0].split[2]
   end
 
-  def self.host_variable(request)
+  def self.host(request)
     request[1].split[1]
   end
 
-  def self.port_variable(request)
+  def self.port(request)
     request[1].split(':')[2]
   end
 
-  def self.accept_variable(request)
+  def self.accept(request)
     request[6].split[1]
   end
 end
