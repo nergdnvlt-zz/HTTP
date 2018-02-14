@@ -21,6 +21,10 @@ class DiagnosticTest < MiniTest::Test
     assert_equal 'GET', Diagnose.verb(@request)
   end
 
+  def test_methods_inside_verb
+    assert_equal 'GET', @request[0].split[0]
+  end
+
   def test_path_method
     assert_equal '/', Diagnose.path(@request)
   end
