@@ -1,13 +1,13 @@
 # Puts together diagnostic string
 module Diagnose
   def self.diagnostic(request)
-    "\n\tVerb: #{verb(request)}
+    "Verb: #{verb(request)}
     Path: #{path(request)}
     Protocol: #{protocol(request)}
     Host: #{host(request)}
     Port: #{port(request)}
     Origin: #{host(request)}
-    Accept: #{accept(request)}\n"
+    Accept: #{accept(request)}"
   end
 
   def self.verb(request)
