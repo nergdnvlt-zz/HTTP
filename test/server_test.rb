@@ -3,7 +3,6 @@ require './test/test_helper'
 
 require './lib/server'
 
-
 class ServerTest < MiniTest::Test
   def test_default_path
     request = Faraday.get('http://127.0.0.1:9292/')

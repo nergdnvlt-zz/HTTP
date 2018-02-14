@@ -28,7 +28,7 @@ class PathParserTest < MiniTest::Test
   def test_passed_hello
     request = ['GET /hello HTTP/1.1',
                'Host: 127.0.0.1:9292']
-    assert_equal "Hello World (1)", Path.route(request)
+    assert_equal 'Hello World (1)', Path.route(request)
   end
 
   def test_path_for_datetime
