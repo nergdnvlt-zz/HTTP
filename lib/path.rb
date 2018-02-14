@@ -13,6 +13,7 @@ module Path
     return hello_world if path == '/hello'
     return Time.now.to_s if path == '/datetime'
     return shutdown if path == '/shutdown'
+    return dictionary(path) if path.include? '/word_search'
   end
 
   def self.hello_world
@@ -22,5 +23,15 @@ module Path
 
   def self.shutdown
     "Total Requests: #{@total_count}"
+  end
+
+  def dictionary(path)
+    word = path
+    require "pry"; binding.pry
+    File.open('/usr/share/dict/words') do |file|
+      file.each do |line|
+        word[line.strip] = true
+      end
+    end
   end
 end

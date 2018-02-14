@@ -2,12 +2,12 @@
 module Diagnose
   def self.diagnostic(request)
     "Verb: #{verb(request)}
-    Path: #{path(request)}
-    Protocol: #{protocol(request)}
-    Host: #{host(request)}
-    Port: #{port(request)}
-    Origin: #{host(request)}
-    Accept: #{accept(request)}"
+    <br>Path: #{path(request)}
+    <br>Protocol: #{protocol(request)}
+    <br>Host: #{host(request)}
+    <br>Port: #{port(request)}
+    <br>Origin: #{host(request)}
+    <br>Accept: #{accept(request)}"
   end
 
   def self.verb(request)

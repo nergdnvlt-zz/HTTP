@@ -4,11 +4,10 @@ require './lib/path'
 # Creates a server object
 class Server
   include Path
+
   attr_accessor :tcp_server
 
   def initialize
-    @tcp_server = TCPServer.new(9292)
-    @tcp_server.listen(1)
     @client = nil
     @request_lines = []
     @server_loop = true
@@ -16,8 +15,10 @@ class Server
   end
 
   def start
+    tcp_server = TCPServer.new(9292)
+    tcp_server.listen(1)
     while @server_loop
-      @client = @tcp_server.accept
+      @client = tcp_server.accept
       while_loop
       parser
       printing
@@ -48,7 +49,7 @@ class Server
     puts @request_lines
     @client.puts headers
     @client.puts @parser_output
-    @server_loop = false if @parser_output.include?'Total'
+    @server_loop = false if @parser_output.include? 'Total'
     @client.close
   end
 end

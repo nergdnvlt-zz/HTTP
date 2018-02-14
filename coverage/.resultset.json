@@ -1,7 +1,45 @@
 {
   "Unit Tests": {
     "coverage": {
+      "/Users/nergdnvlt/new_turing/1module/projects/http/lib/diagnose.rb": [
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        3,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null
+      ]
     },
-    "timestamp": 1518623986
+    "timestamp": 1518639503
   }
 }

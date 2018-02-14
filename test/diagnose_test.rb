@@ -49,12 +49,12 @@ class DiagnosticTest < MiniTest::Test
 
   def test_diagnostic
     expected = "Verb: GET
-    Path: /
-    Protocol: HTTP/1.1
-    Host: 127.0.0.1:9292
-    Port: 9292
-    Origin: 127.0.0.1:9292
-    Accept: */*"
+    <br>Path: /
+    <br>Protocol: HTTP/1.1
+    <br>Host: 127.0.0.1:9292
+    <br>Port: 9292
+    <br>Origin: 127.0.0.1:9292
+    <br>Accept: */*"
     result = Diagnose.diagnostic(@request)
     assert_equal expected, result
   end
