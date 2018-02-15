@@ -6,12 +6,18 @@ module Path
   @count = 0
   @total_count = 0
 
+  def self.verb_parser(request_lines)
+    verb = request_lines[0].split[0]
+    return route(request_lines) if verb == 'GET'
+    return some_other_method if verb == 'POST'
+  end
+
   def self.route(request_lines)
     @total_count += 1
     path = request_lines[0].split[1]
     return Diagnose.diagnostic(request_lines) if path == '/'
     return hello_world if path == '/hello'
-    return Time.now.to_s if path == '/datetime'
+    return Time.now.strftime('%H:%M%p on %A, %B %d, %Y') if path == '/datetime'
     return shutdown if path == '/shutdown'
     return dictionary(path) if path.include? '/word_search'
   end

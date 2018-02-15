@@ -28,13 +28,14 @@ class PathParserTest < MiniTest::Test
   def test_passed_hello
     request = ['GET /hello HTTP/1.1',
                'Host: 127.0.0.1:9292']
-    assert_equal 'Hello World (1)', Path.route(request)
+    result = Path.route(request)
+    assert result.include? 'Hello'
   end
 
   def test_path_for_datetime
     request = ['GET /datetime HTTP/1.1',
                'Host: 127.0.0.1:9292']
-    expected = Time.now.to_s
+    expected = Time.now.strftime('%H:%M%p on %A, %B %d, %Y')
     result = Path.route(request)
 
     assert_equal expected, result
@@ -62,5 +63,13 @@ class PathParserTest < MiniTest::Test
     result = Path.route(request).include?('Total')
 
     assert result
+  end
+
+  def test_verb_parser
+    request = ['GET /hello HTTP/1.1',
+               'Host: 127.0.0.1:9292']
+    result = Path.verb_parser(request)
+
+    assert result.include? 'Hello'
   end
 end

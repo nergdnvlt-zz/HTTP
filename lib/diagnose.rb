@@ -31,6 +31,7 @@ module Diagnose
   end
 
   def self.accept(request)
+    return '' if request[6].class == NilClass
     request[6].split[1]
   end
 end

@@ -33,7 +33,7 @@ class Server
   end
 
   def parser
-    @parser_output = Path.route(@request_lines)
+    @parser_output = Path.verb_parser(@request_lines)
   end
 
   def headers
