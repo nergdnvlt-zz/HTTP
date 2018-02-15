@@ -17,7 +17,7 @@ module Path
     path = request_lines[0].split[1]
     return Diagnose.diagnostic(request_lines) if path == '/'
     return hello_world if path == '/hello'
-    return Time.now.strftime('%H:%M%p on %A, %B %d, %Y') if path == '/datetime'
+    return time if path == '/datetime'
     return shutdown if path == '/shutdown'
     return dictionary(path) if path.include? '/word_search'
   end
@@ -29,6 +29,10 @@ module Path
 
   def self.shutdown
     "Total Requests: #{@total_count}"
+  end
+
+  def self.time
+    Time.now.strftime('%H:%M%p on %A, %B %d, %Y')
   end
 
   def self.dictionary(path)
