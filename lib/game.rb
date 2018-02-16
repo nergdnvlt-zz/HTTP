@@ -2,8 +2,8 @@
 class Game
   attr_reader :random_number
 
-  def initialize
-    @random_number = rand(1..100)
+  def initialize(random_number = rand(1..100))
+    @random_number = random_number
     @user_guess    = 0
     @tries         = 0
     @result        = ''
@@ -22,6 +22,7 @@ class Game
   end
 
   def results
-    "#{@result} with #{@tries} attempts!"
+    return "#{@result} With #{@tries} attempt!" if @tries == 1
+    "#{@result} With #{@tries} attempts!"
   end
 end
