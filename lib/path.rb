@@ -1,9 +1,9 @@
-require './lib/diagnose'
+require './lib/response'
 require './lib/game'
 
 # Evaluates path for output
 class Path
-  include Diagnose
+  include Response
 
   def initialize
     @game = Game.new
@@ -23,17 +23,12 @@ class Path
   end
 
   def route(request_lines)
-    return Diagnose.diagnostic(request_lines) if @path == '/'
-    return hello_world if @path == '/hello'
-    return Diagnose.time if @path == '/datetime'
-    return Diagnose.shutdown(@total_count) if @path == '/shutdown'
-    return Diagnose.dictionary(@word) if @path.include? '/word_search'
+    return Response.diagnostic(request_lines) if @path == '/'
+    return Response.hello_world(@count += 1) if @path == '/hello'
+    return Response.time if @path == '/datetime'
+    return Response.shutdown(@total_count) if @path == '/shutdown'
+    return Response.dictionary(@word) if @path.include? '/word_search'
     return game_getter if @path == '/game'
-  end
-
-  def hello_world
-    @count += 1
-    "Hello World (#{@count})"
   end
 
   def game_post
