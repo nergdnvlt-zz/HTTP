@@ -1,6 +1,7 @@
 require './test/test_helper'
 
 require './lib/path'
+require './lib/game'
 
 class PathParserTest < MiniTest::Test
   def setup
@@ -77,6 +78,19 @@ class PathParserTest < MiniTest::Test
                'Host: 127.0.0.1:9292']
     result = @path.verb_parser(request)
 
-    assert_equal "Good Luck", result
-  end    
+    assert_equal 'Good Luck', result
+  end
+
+  def test_game_post_start_game_path
+    @path.path = '/start_game'
+    result = @path.game_post
+    assert_equal 'Good Luck', result
+  end
+
+  def test_game_post_game_path
+    @path.path = '/game'
+    @path.test_guess = 10
+    result = @path.game_post.downcase
+    assert result.include? 'too'
+  end
 end
