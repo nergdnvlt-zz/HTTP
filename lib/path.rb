@@ -6,14 +6,17 @@ class Path
   include Response
 
   def initialize
+    @client = ''
     @game = Game.new
+    @guess = 0
     @count = 0
     @total_count = 0
     @path = ''
     @word = ''
   end
 
-  def verb_parser(request_lines)
+  def verb_parser(request_lines, client)
+    @client = client
     verb = request_lines[0].split[0]
     @path = request_lines[0].split[1]
     @word = @path.split('=')[1]
@@ -34,12 +37,18 @@ class Path
   def game_post
     if @path == '/start_game'
       @game.start
-    elsif @path == 'game'
-      @game
+    elsif @path == '/game'
+      user_guess
+      @game.guess(@guess)
     end
   end
 
   def game_getter
     @game.results
+  end
+
+  def user_guess
+    guess = @client.read(100)
+    @guess = guess.split[-2]
   end
 end

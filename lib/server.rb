@@ -7,7 +7,6 @@ class Server
 
   def initialize
     @path = Path.new
-    @client = nil
     @request_lines = []
     @server_loop = true
     @parser_output = ''
@@ -35,12 +34,7 @@ class Server
   end
 
   def parser
-    @parser_output = @path.verb_parser(@request_lines)
-  end
-
-  def guess
-    guess = @client.read(100)
-    @guess = guess.split[-2]
+    @parser_output = @path.verb_parser(@request_lines, @client)
   end
 
   def headers
