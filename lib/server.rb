@@ -12,6 +12,7 @@ class Server
     @server_loop = true
     @parser_output = ''
     @body = ''
+    @guess = 0
   end
 
   def start
@@ -20,6 +21,7 @@ class Server
     while @server_loop
       @client = tcp_server.accept
       while_loop
+      require "pry"; binding.pry
       parser
       printing
       @request_lines = []
@@ -30,10 +32,16 @@ class Server
     while line = @client.gets and !line.chomp.empty?
       @request_lines << line.chomp
     end
+    guess
   end
 
   def parser
     @parser_output = @path.verb_parser(@request_lines)
+  end
+
+  def guess
+    guess = @client.read(100)
+    @guess = guess.split[-2]
   end
 
   def headers
@@ -43,6 +51,7 @@ class Server
      'server: ruby',
      'content-type: text/html; charset=iso-8859-1',
      "content-length: #{output.length}\r\n\r\n"].join("\r\n")
+     require "pry"; binding.pry
   end
 
   def printing

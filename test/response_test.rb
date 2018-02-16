@@ -1,8 +1,8 @@
 require './test/test_helper'
 
-require './lib/diagnose'
+require './lib/response'
 
-class DiagnosticTest < MiniTest::Test
+class ResponseTest < MiniTest::Test
   def setup
     @request = ['GET / HTTP/1.1',
                 'Host: 127.0.0.1:9292',
@@ -16,7 +16,7 @@ class DiagnosticTest < MiniTest::Test
   end
 
   def test_verb_method
-    assert_equal 'GET', Diagnose.verb(@request)
+    assert_equal 'GET', Response.verb(@request)
   end
 
   def test_methods_inside_verb
@@ -24,26 +24,26 @@ class DiagnosticTest < MiniTest::Test
   end
 
   def test_path_method
-    assert_equal '/', Diagnose.path(@request)
+    assert_equal '/', Response.path(@request)
   end
 
   def test_protocol_method
-    result = Diagnose.protocol(@request)
+    result = Response.protocol(@request)
     assert_equal 'HTTP/1.1', result
   end
 
   def test_host_method
-    result = Diagnose.host(@request)
+    result = Response.host(@request)
     assert_equal '127.0.0.1:9292', result
   end
 
   def test_port_method
-    result = Diagnose.port(@request)
+    result = Response.port(@request)
     assert_equal '9292', result
   end
 
   def test_accept_method
-    result = Diagnose.accept(@request)
+    result = Response.accept(@request)
     assert_equal '*/*', result
   end
 
@@ -55,7 +55,7 @@ class DiagnosticTest < MiniTest::Test
     <br>Port: 9292
     <br>Origin: 127.0.0.1:9292
     <br>Accept: */*"
-    result = Diagnose.diagnostic(@request)
+    result = Response.diagnostic(@request)
     assert_equal expected, result
   end
 
@@ -73,30 +73,30 @@ class DiagnosticTest < MiniTest::Test
     <br>Port: 9292
     <br>Origin: 127.0.0.1:9292
     <br>Accept: "
-    result = Diagnose.diagnostic(request)
+    result = Response.diagnostic(request)
     assert_equal expected, result
   end
 
   def test_for_shutdown
     expected = 'Total Requests: 10'
 
-    assert_equal expected, Diagnose.shutdown(10)
+    assert_equal expected, Response.shutdown(10)
   end
 
   def test_path_for_datetime
     expected = Time.now.strftime('%H:%M%p on %A, %B %d, %Y')
-    result = Diagnose.time
+    result = Response.time
 
     assert_equal expected, result
   end
 
   def test_for_dictionary_known
-    result = Diagnose.dictionary('hi')
+    result = Response.dictionary('hi')
     assert_equal 'HI is a known word', result
   end
 
   def test_for_dictionary_unknown
-    result = Diagnose.dictionary('afse')
+    result = Response.dictionary('afse')
     assert_equal 'AFSE is not a known word', result
   end
 end
