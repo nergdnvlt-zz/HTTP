@@ -21,17 +21,6 @@ class PathParserTest < MiniTest::Test
   end
 
   def test_will_pass_argument
-    # path = Path.new
-    # request = ['GET / HTTP/1.1',
-    #            'Host: 127.0.0.1:9292',
-    #            'Connection: keep-alive',
-    #            'Cache-Control: no-cache',
-    #            'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X)',
-    #            'Postman-Token: 4331415e-edea-a89a-9b02-21bccb082332',
-    #            'Accept: */*',
-    #            'Accept-Encoding: gzip, deflate, br',
-    #            'Accept-Language: en-US,en;q=0.9']
-
     expected = "Verb: GET
     <br>Path: /
     <br>Protocol: HTTP/1.1
@@ -82,7 +71,7 @@ class PathParserTest < MiniTest::Test
 
     assert result
   end
-
+  
   def test_game_start_path
     request = ['POST /start_game HTTP/1.1',
                'Host: 127.0.0.1:9292']
