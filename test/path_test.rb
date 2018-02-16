@@ -82,4 +82,12 @@ class PathParserTest < MiniTest::Test
 
     assert result
   end
+
+  def test_game_start_path
+    request = ['POST /start_game HTTP/1.1',
+               'Host: 127.0.0.1:9292']
+    result = @path.verb_parser(request)
+
+    assert_equal "Good Luck", result
+  end
 end

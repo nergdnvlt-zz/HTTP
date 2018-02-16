@@ -55,11 +55,10 @@ class Path
   end
 
   def game(request_lines)
-    path = request_lines[0].split[1]
-    if path == '/start_game'
+    if @path == '/start_game'
       @game = Game.new
       @game.start
-    elsif path == 'game'
+    elsif @path == 'game'
       @game
     end
   end
