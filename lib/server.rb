@@ -3,11 +3,10 @@ require './lib/path'
 
 # Creates a server object
 class Server
-  include Path
-
   attr_accessor :tcp_server
 
   def initialize
+    @path = Path.new
     @client = nil
     @request_lines = []
     @server_loop = true
@@ -33,7 +32,7 @@ class Server
   end
 
   def parser
-    @parser_output = Path.verb_parser(@request_lines)
+    @parser_output = @path.verb_parser(@request_lines)
   end
 
   def headers
