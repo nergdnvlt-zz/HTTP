@@ -14,18 +14,18 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-02-16T08:33:49-07:00">2018-02-16T08:33:49-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-02-16T08:39:39-07:00">2018-02-16T08:39:39-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">93.26%</span></span>
+    (<span class="covered_percent"><span class="green">95.51%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.28
+         4.88
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>3</b> files in total.
     <b>89</b> relevant lines. 
-    <span class="green"><b>83</b> lines covered</span> and
-    <span class="red"><b>6</b> lines missed </span>
+    <span class="green"><b>85</b> lines covered</span> and
+    <span class="red"><b>4</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -57,17 +57,17 @@
         <td>18</td>
         <td>18</td>
         <td>0</td>
-        <td>8.3</td>
+        <td>9.4</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#be95198277c0cbf6e55f58b78f3b3b80d43bddb4" class="src_link" title="lib/path.rb">lib/path.rb</a></td>
-        <td class="yellow strong">85.37 %</td>
+        <td class="green strong">90.24 %</td>
         <td>59</td>
         <td>41</td>
-        <td>35</td>
-        <td>6</td>
-        <td>3.9</td>
+        <td>37</td>
+        <td>4</td>
+        <td>4.7</td>
       </tr>
       
       <tr>
@@ -140,26 +140,26 @@
           <code class="ruby">  def initialize(random_number = rand(1..100))</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="6">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="24" data-linenumber="6">
+          <span class="hits">24</span>
           
           <code class="ruby">    @random_number = random_number</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="7">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="24" data-linenumber="7">
+          <span class="hits">24</span>
           
           <code class="ruby">    @user_guess    = 0</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="8">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="24" data-linenumber="8">
+          <span class="hits">24</span>
           
           <code class="ruby">    @tries         = 0</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="9">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="24" data-linenumber="9">
+          <span class="hits">24</span>
           
           <code class="ruby">    @result        = &#39;&#39;</code>
         </li>
@@ -206,32 +206,32 @@
           <code class="ruby">  def guess(user_guess)</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="17">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="13" data-linenumber="17">
+          <span class="hits">13</span>
           
           <code class="ruby">    @tries += 1</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="18">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="13" data-linenumber="18">
+          <span class="hits">13</span>
           
           <code class="ruby">    @user_guess = user_guess.to_i</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="19">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="13" data-linenumber="19">
+          <span class="hits">13</span>
           
           <code class="ruby">    return @result = &#39;Correct! You are too good.&#39; if @user_guess == @random_number</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="20">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="11" data-linenumber="20">
+          <span class="hits">11</span>
           
           <code class="ruby">    return @result = &#39;Nope, too high!&#39; if @user_guess &gt; @random_number</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="21">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="7" data-linenumber="21">
+          <span class="hits">7</span>
           
           <code class="ruby">    return @result = &#39;Sorry, too low!&#39; if @user_guess &lt; @random_number</code>
         </li>
@@ -254,8 +254,8 @@
           <code class="ruby">  def results</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="25">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="25">
+          <span class="hits">6</span>
           
           <code class="ruby">    return &quot;#{@result} With #{@tries} attempt! Your last guess was #{@user_guess}.&quot; if @tries == 1</code>
         </li>
@@ -286,11 +286,11 @@
         <div class="source_table" id="be95198277c0cbf6e55f58b78f3b3b80d43bddb4">
   <div class="header">
     <h3>lib/path.rb</h3>
-    <h4><span class="yellow">85.37 %</span> covered</h4>
+    <h4><span class="green">90.24 %</span> covered</h4>
     <div>
       <b>41</b> relevant lines. 
-      <span class="green"><b>35</b> lines covered</span> and
-      <span class="red"><b>6</b> lines missed.</span>
+      <span class="green"><b>37</b> lines covered</span> and
+      <span class="red"><b>4</b> lines missed.</span>
     </div>
   </div>
   
@@ -363,50 +363,50 @@
           <code class="ruby">  def initialize</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="12">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="12">
+          <span class="hits">12</span>
           
           <code class="ruby">    @client = &#39;&#39;</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="13">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="13">
+          <span class="hits">12</span>
           
           <code class="ruby">    @test_guess = 0</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="14">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="14">
+          <span class="hits">12</span>
           
           <code class="ruby">    @game = Game.new</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="15">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="15">
+          <span class="hits">12</span>
           
           <code class="ruby">    @guess = 0</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="16">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="16">
+          <span class="hits">12</span>
           
           <code class="ruby">    @count = 0</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="17">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="17">
+          <span class="hits">12</span>
           
           <code class="ruby">    @total_count = 0</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="18">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="18">
+          <span class="hits">12</span>
           
           <code class="ruby">    @path = &#39;&#39;</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="19">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="19">
+          <span class="hits">12</span>
           
           <code class="ruby">    @word = &#39;&#39;</code>
         </li>
@@ -489,38 +489,38 @@
           <code class="ruby">  def route(request_lines)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="33">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="33">
+          <span class="hits">7</span>
           
           <code class="ruby">    return Response.diagnostic(request_lines) if @path == &#39;/&#39;</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="34">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="6" data-linenumber="34">
+          <span class="hits">6</span>
           
           <code class="ruby">    return Response.hello_world(@count += 1) if @path == &#39;/hello&#39;</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="35">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="35">
+          <span class="hits">5</span>
           
           <code class="ruby">    return Response.time if @path == &#39;/datetime&#39;</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="36">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="36">
+          <span class="hits">4</span>
           
           <code class="ruby">    return Response.shutdown(@total_count) if @path == &#39;/shutdown&#39;</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="37">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="37">
+          <span class="hits">3</span>
           
           <code class="ruby">    return Response.dictionary(@word) if @path.include? &#39;/word_search&#39;</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="38">
-          
+        <li class="covered" data-hits="1" data-linenumber="38">
+          <span class="hits">1</span>
           
           <code class="ruby">    return game_getter if @path == &#39;/game&#39;</code>
         </li>
@@ -543,8 +543,8 @@
           <code class="ruby">  def game_post</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="42">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="5" data-linenumber="42">
+          <span class="hits">5</span>
           
           <code class="ruby">    if @path == &#39;/start_game&#39;</code>
         </li>
@@ -555,14 +555,14 @@
           <code class="ruby">      @game.start</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="44">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="44">
+          <span class="hits">3</span>
           
           <code class="ruby">    elsif @path == &#39;/game&#39;</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="45">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="3" data-linenumber="45">
+          <span class="hits">3</span>
           
           <code class="ruby">      return @game.guess(@test_guess) if @test_guess.class == Integer</code>
         </li>
@@ -603,8 +603,8 @@
           <code class="ruby">  def game_getter</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="52">
-          
+        <li class="covered" data-hits="2" data-linenumber="52">
+          <span class="hits">2</span>
           
           <code class="ruby">    @game.results</code>
         </li>

@@ -93,4 +93,20 @@ class PathParserTest < MiniTest::Test
     result = @path.game_post.downcase
     assert result.include? 'too'
   end
+
+  def test_game_getter
+    @path.path = '/game'
+    @path.test_guess = 10
+    @path.game_post
+    result = @path.game_getter.downcase
+    assert result.include? 'too'
+  end
+
+  def test_game_getter_through_route
+    @path.path = '/game'
+    @path.test_guess = 10
+    @path.game_post
+    result = @path.route(nil).downcase
+    assert result.include? 'too'
+  end
 end
