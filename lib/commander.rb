@@ -2,11 +2,15 @@ require './lib/response'
 require './lib/game'
 
 # Evaluates path for output
-class Path
+class Commander
+  attr_accessor :path,
+                :test_guess
+
   include Response
 
   def initialize
     @client = ''
+    @test_guess = 0
     @game = Game.new
     @guess = 0
     @count = 0
@@ -15,7 +19,7 @@ class Path
     @word = ''
   end
 
-  def verb_parser(request_lines, client)
+  def verb_parser(request_lines, client=nil)
     @client = client
     verb = request_lines[0].split[0]
     @path = request_lines[0].split[1]
@@ -38,6 +42,7 @@ class Path
     if @path == '/start_game'
       @game.start
     elsif @path == '/game'
+      return @game.guess(@test_guess) if @test_guess.class == Integer
       user_guess
       @game.guess(@guess)
     end

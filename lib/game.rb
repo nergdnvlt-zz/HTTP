@@ -16,13 +16,13 @@ class Game
   def guess(user_guess)
     @tries += 1
     @user_guess = user_guess.to_i
-    return @result = 'Correct!' if @user_guess == @random_number
+    return @result = 'Correct! You are too good.' if @user_guess == @random_number
     return @result = 'Nope, too high!' if @user_guess > @random_number
     return @result = 'Sorry, too low!' if @user_guess < @random_number
   end
 
   def results
-    return "#{@result} With #{@tries} attempt!" if @tries == 1
-    "#{@result} With #{@tries} attempts!"
+    return "#{@result} With #{@tries} attempt! Your last guess was #{@user_guess}." if @tries == 1
+    "#{@result} With #{@tries} attempts! Your last guess was #{@user_guess}."
   end
 end

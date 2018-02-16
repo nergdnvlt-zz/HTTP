@@ -1,12 +1,12 @@
 require 'socket'
-require './lib/path'
+require './lib/commander'
 
 # Creates a server object
 class Server
   attr_accessor :tcp_server
 
   def initialize
-    @path = Path.new
+    @commander = Commander.new
     @request_lines = []
     @server_loop = true
     @parser_output = ''
@@ -34,7 +34,7 @@ class Server
   end
 
   def parser
-    @parser_output = @path.verb_parser(@request_lines, @client)
+    @parser_output = @commander.verb_parser(@request_lines, @client)
   end
 
   def headers

@@ -1,10 +1,11 @@
 require './test/test_helper'
 
-require './lib/path'
+require './lib/commander'
+require './lib/game'
 
 class PathParserTest < MiniTest::Test
   def setup
-    @path = Path.new
+    @path = Commander.new
     @request = ['GET / HTTP/1.1',
                 'Host: 127.0.0.1:9292',
                 'Connection: keep-alive',
@@ -17,7 +18,7 @@ class PathParserTest < MiniTest::Test
   end
 
   def test_it_exists
-    assert_instance_of Path, @path
+    assert_instance_of Commander, @path
   end
 
   def test_will_pass_argument
@@ -77,6 +78,35 @@ class PathParserTest < MiniTest::Test
                'Host: 127.0.0.1:9292']
     result = @path.verb_parser(request)
 
-    assert_equal "Good Luck", result
-  end    
+    assert_equal 'Good Luck', result
+  end
+
+  def test_game_post_start_game_path
+    @path.path = '/start_game'
+    result = @path.game_post
+    assert_equal 'Good Luck', result
+  end
+
+  def test_game_post_game_path
+    @path.path = '/game'
+    @path.test_guess = 10
+    result = @path.game_post.downcase
+    assert result.include? 'too'
+  end
+
+  def test_game_getter
+    @path.path = '/game'
+    @path.test_guess = 10
+    @path.game_post
+    result = @path.game_getter.downcase
+    assert result.include? 'too'
+  end
+
+  def test_game_getter_through_route
+    @path.path = '/game'
+    @path.test_guess = 10
+    @path.game_post
+    result = @path.route(nil).downcase
+    assert result.include? 'too'
+  end
 end

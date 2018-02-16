@@ -16,4 +16,9 @@ class ServerTest < MiniTest::Test
     request = Faraday.get('http://127.0.0.1:9292/datetime')
     assert request.body.include?('2018')
   end
+
+  def test_word_search
+    request = Faraday.get('http://127.0.0.1:9292/word_search?word=hi')
+    assert request.body.include?('known')
+  end
 end
