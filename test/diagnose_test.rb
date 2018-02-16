@@ -76,4 +76,27 @@ class DiagnosticTest < MiniTest::Test
     result = Diagnose.diagnostic(request)
     assert_equal expected, result
   end
+
+  def test_for_shutdown
+    expected = 'Total Requests: 10'
+
+    assert_equal expected, Diagnose.shutdown(10)
+  end
+
+  def test_path_for_datetime
+    expected = Time.now.strftime('%H:%M%p on %A, %B %d, %Y')
+    result = Diagnose.time
+
+    assert_equal expected, result
+  end
+
+  def test_for_dictionary_known
+    result = Diagnose.dictionary('hi')
+    assert_equal 'HI is a known word', result
+  end
+
+  def test_for_dictionary_unknown
+    result = Diagnose.dictionary('afse')
+    assert_equal 'AFSE is not a known word', result
+  end
 end
