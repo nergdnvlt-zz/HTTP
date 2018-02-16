@@ -2,7 +2,7 @@ require './lib/response'
 require './lib/game'
 
 # Evaluates path for output
-class Path
+class Commander
   attr_accessor :path,
                 :test_guess
 

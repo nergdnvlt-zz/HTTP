@@ -1,37 +1,7 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/nergdnvlt/new_turing/1module/projects/http/lib/game.rb": [
-        null,
-        1,
-        1,
-        null,
-        1,
-        24,
-        24,
-        24,
-        24,
-        null,
-        null,
-        1,
-        2,
-        null,
-        null,
-        1,
-        13,
-        13,
-        13,
-        11,
-        7,
-        null,
-        null,
-        1,
-        6,
-        2,
-        null,
-        null
-      ],
-      "/Users/nergdnvlt/new_turing/1module/projects/http/lib/path.rb": [
+      "/Users/nergdnvlt/new_turing/1module/projects/http/lib/commander.rb": [
         1,
         1,
         null,
@@ -154,8 +124,38 @@
         3,
         null,
         null
+      ],
+      "/Users/nergdnvlt/new_turing/1module/projects/http/lib/game.rb": [
+        null,
+        1,
+        1,
+        null,
+        1,
+        24,
+        24,
+        24,
+        24,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        13,
+        13,
+        13,
+        11,
+        6,
+        null,
+        null,
+        1,
+        6,
+        2,
+        null,
+        null
       ]
     },
-    "timestamp": 1518795579
+    "timestamp": 1518796344
   }
 }

@@ -1,11 +1,11 @@
 require './test/test_helper'
 
-require './lib/path'
+require './lib/commander'
 require './lib/game'
 
 class PathParserTest < MiniTest::Test
   def setup
-    @path = Path.new
+    @path = Commander.new
     @request = ['GET / HTTP/1.1',
                 'Host: 127.0.0.1:9292',
                 'Connection: keep-alive',
@@ -18,7 +18,7 @@ class PathParserTest < MiniTest::Test
   end
 
   def test_it_exists
-    assert_instance_of Path, @path
+    assert_instance_of Commander, @path
   end
 
   def test_will_pass_argument
