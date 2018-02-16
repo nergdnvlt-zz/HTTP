@@ -11,6 +11,7 @@ class Server
     @request_lines = []
     @server_loop = true
     @parser_output = ''
+    @body = ''
   end
 
   def start

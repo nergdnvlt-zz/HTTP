@@ -6,6 +6,7 @@ class Path
   include Diagnose
 
   def initialize
+    @game = Game.new
     @count = 0
     @total_count = 0
     @path = ''
@@ -37,7 +38,6 @@ class Path
 
   def game_post
     if @path == '/start_game'
-      @game = Game.new
       @game.start
     elsif @path == 'game'
       @game
